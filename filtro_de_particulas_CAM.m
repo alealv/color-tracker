@@ -29,7 +29,7 @@ m = 'R';
 %R: Roulette wheel selection
 %S: Stochastic universal sampling
 
-exit = 0;   % flag de salida del GUI
+exit = false;   % flag de salida del GUI
 
 %% Modelo de movimiento
 
@@ -88,8 +88,11 @@ X = crear_particulas([1 1], resolucion, N_particulas); % Ancho x Alto
 start(video)
 
 %% Generaciones
+while(exit == false)
 
-while(exit == 0)
+    if (kbhit(1) == 'q')
+      exit = true
+    end
     
     % Obtenemos un frame
 %    Frame = getdata(video, 1); % Alto x Ancho x 3(RGB)
